@@ -32,7 +32,7 @@
                         @foreach ($utolso3 as $csapat1)
                         <tr>
                             <td>{{$csapat1->cs_id}}</td>
-                            <td>{{$csapat1->csapat_nev}}</td>
+                            <td><a href="{{route('csapattagok',$csapat1->cs_id)}}">{{$csapat1->csapat_nev}}</a></td>
                             <td>{{$csapat1->szekhely}}</td>
                             <td>{{$csapat1->alapitasi_ev}}</td>
                             <td>{{$csapat1->vezeto_edzo}}</td>
@@ -49,6 +49,12 @@
         <div class="col-12 col-md-6">
             <div class="bg-success text-white p-3 rounded">
                 <h2>Csapat rögzítés</h2>
+
+                @if (session()->has('kesz'))
+                    <div class="alert alert-success">
+                        Az adatok rögzítése sikeres!
+                    </div>
+                @endif
 
                 <form method="POST">
                     @csrf
