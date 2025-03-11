@@ -19,6 +19,24 @@
         </div>
     </div>
 
+    <nav>
+
+        <a href="">Bárki</a>
+
+        <!-- Ezeknek a menüknek csak akkor kell megjelennie ha ba vagyok lépve -->
+        @if (Auth::check())
+        <a href="">User menü 1</a>
+        <a href="">User menü 2</a> 
+        @endif
+       
+        <!-- Ezeknek a menüknek csak akkor kell megjelennie ha ba vagyok lépve ÉS ADMIN VAGYOK -->
+        @if (Auth::check() && Auth::user()->tipus == 'admin')
+        <a href="{{route('admin.lista')}}">Admin menü 1</a>
+        <a href="">Admin menü 2</a>
+        @endif
+        
+    </nav>
+
     @yield('content')
 
 
